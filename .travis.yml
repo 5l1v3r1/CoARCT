@@ -7,15 +7,10 @@ services:
 
 compiler:
   - clang
+
 before_install:
-  - docker pull tkzdockerid/coarct-testenv:clang-6-1
-  - docker run -it tkzdockerid/coarct-testenv:clang-6-1 /bin/bash
+  - docker pull tkzdockerid/coarct-testenv:clang-6-2
+  - docker run -it tkzdockerid/coarct-testenv:clang-6-2 /bin/bash test_coarct.sh
 
 script:
-  - git clone https://github.com/lanl/CoARCT.git -b clang-6.0 coarct
-  - cd coarct
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make VERBOSE=on -j 4 2>&1 | tee make.out
-  - ./test/corct_unittests
+  - /bin/bash test_coarct.sh
