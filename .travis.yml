@@ -3,11 +3,13 @@ language: cpp
 sudo: required
 
 services:
-  -docker
+  - docker
 
+compiler:
+  - clang
 before_install:
   - docker pull tkzdockerid/coarct-testenv:clang-6-1
-  - docker run -it coarct-testenv /bin/bash
+  - docker run -it tkzdockerid/coarct-testenv:clang-6-1 /bin/bash
 
 script:
   - git clone https://github.com/lanl/CoARCT.git -b clang-6.0 coarct
