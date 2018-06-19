@@ -10,7 +10,6 @@ compiler:
 
 before_install:
   - docker pull tkzdockerid/coarct-testenv:clang-6-2
-  - docker run -it tkzdockerid/coarct-testenv:clang-6-2 /bin/bash test_coarct.sh
 
 script:
-  - /bin/bash test_coarct.sh
+  - docker run -it tkzdockerid/coarct-testenv:clang-6-2 /bin/bash test_coarct.sh
